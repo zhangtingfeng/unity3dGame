@@ -1,0 +1,13 @@
+D:\Works\Chen2020\Eggsoft.Common\bin\Debug\Eggsoft.Common.dll
+D:\Works\Chen2020\Eggsoft.Common\bin\Debug\Eggsoft.Common.pdb
+D:\Works\Chen2020\Assets\Plugins\Eggsoft.Common.dll
+D:\Works\Chen2020\Assets\Plugins\Eggsoft.Common.pdb
+D:\Works\Chen2020\Eggsoft.Common\obj\Debug\Eggsoft.Common.csproj.CoreCompileInputs.cache
+D:\Works\Chen2020\Eggsoft.Common\obj\Debug\Eggsoft.Common.csproj.CopyComplete
+D:\Works\Chen2020\Eggsoft.Common\obj\Debug\Eggsoft.Common.dll
+D:\Works\Chen2020\Eggsoft.Common\obj\Debug\Eggsoft.Common.pdb
+D:\Works\Chen2020\Eggsoft.Common\obj\Debug\Eggsoft.Common.csprojAssemblyReference.cache
+D:\Works\Chen2020OK\Eggsoft.Common\obj\Debug\Eggsoft.Common.csprojAssemblyReference.cache
+D:\Works\Chen2020OK\Eggsoft.Common\obj\Debug\Eggsoft.Common.csproj.CoreCompileInputs.cache
+D:\Works\Chen2020OK\Eggsoft.Common\obj\Debug\Eggsoft.Common.dll
+D:\Works\Chen2020OK\Eggsoft.Common\obj\Debug\Eggsoft.Common.pdb

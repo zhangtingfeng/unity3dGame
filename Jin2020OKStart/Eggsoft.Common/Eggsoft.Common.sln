@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eggsoft.Common", "Eggsoft.Common.csproj", "{DB1E0C3C-2F77-4F58-8A11-ADF57DB4D681}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB1E0C3C-2F77-4F58-8A11-ADF57DB4D681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB1E0C3C-2F77-4F58-8A11-ADF57DB4D681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB1E0C3C-2F77-4F58-8A11-ADF57DB4D681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB1E0C3C-2F77-4F58-8A11-ADF57DB4D681}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73D1DD59-0B55-4A65-BBCD-770EFC7DF11B}
+	EndGlobalSection
+EndGlobal
