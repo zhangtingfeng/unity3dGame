@@ -1,27 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
+public class SelectContent : MonoBehaviour
+{
 
-public class SelectContent : MonoBehaviour {
-
-    public static ArrayList ContentList = new ArrayList() ;
+    //public static ArrayList ContentList = new ArrayList() ;
 
     public void setContent(string selected)
     {
+
+        Toggle Content_Ele = GameObject.Find("Content_" + selected).transform.GetComponentsInChildren<Toggle>()[0];
+
+        Debug_Log.Call_WriteLog(Content_Ele.isOn, "点击" + selected.toString(), "Unity");
+
+        ArrayList ContentList = new ArrayList();
+        Assets.Script.ReadIniPar ReadIniPargetParme = Assets.Script.getPar.getParme();
+        ArrayList bContent = new ArrayList(ReadIniPargetParme.Content.Split(','));
+        if (!System.String.IsNullOrEmpty(ReadIniPargetParme.Content))///如果读取到值了就赋值
+        {
+            ContentList = bContent;
+        }
+
         // TrainTime = selected;
-        if (ContentList.Contains(selected))
+        if (ContentList.Contains(selected) && !Content_Ele.isOn)
         {
             ContentList.Remove(selected);
         }
-        else {
+        else if (!ContentList.Contains(selected) && Content_Ele.isOn)
+        {
             ContentList.Add(selected);
         }
         string str = string.Join(",", (string[])ContentList.ToArray(typeof(string)));
 
-        string strpersistentDataPath = Application.persistentDataPath + "/oliverData.ini";
-        Assets.Script.MyIni.WritePrivateProfileString("GameContent", "Content", str, strpersistentDataPath);
+        Assets.Script.MyIni ini = new Assets.Script.MyIni();
+        ini.WriteIniContent("GameContent", "Content", str);
 
-        Debug_Log.Call_WriteLog("SelectContent=" + selected, selected.toString(), "Unity");
+
+        //转换成数组
+
+        //string strdddd = string.Join(",", (string[])ContentList.ToArray(typeof(string)));
+        Debug_Log.Call_WriteLog("setContent=" + str, selected.toString(), "Unity");
         Debug.Log(selected);
 
 
@@ -33,8 +52,8 @@ public class SelectContent : MonoBehaviour {
         //else {
         //}
     }
-    
-   
+
+
     // Use this for initialization
 
 }

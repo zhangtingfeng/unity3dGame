@@ -9,10 +9,6 @@ using UnityEngine.UI;
 
 public class SetDBRecordBAK : MonoBehaviour
 {
-
-   
-
-   
     //private ArrayList ContentList = new ArrayList();
     //private GameObject gamebakObject[10];//有10个元素的学生类对象数组
     // Use this for initialization
@@ -74,22 +70,18 @@ public class SetDBRecordBAK : MonoBehaviour
 
 
             #region 初始化内容选择
-            /**
-            Toggle ToggleContentnormal = GameObject.Find("ToggleContentnormal").transform.GetComponentsInChildren<Toggle>()[0];
-            Toggle ToggleNumber = GameObject.Find("ToggleNumber").transform.GetComponentsInChildren<Toggle>()[0];
-            Toggle ToggleShape = GameObject.Find("ToggleShape").transform.GetComponentsInChildren<Toggle>()[0];
-            Toggle ToggleFood = GameObject.Find("ToggleFood").transform.GetComponentsInChildren<Toggle>()[0];
-            Toggle ToggleFruit = GameObject.Find("ToggleFruit").transform.GetComponentsInChildren<Toggle>()[0];
-            if (ContentList.Contains("normal")) ToggleContentnormal.isOn = true;
-            if (ContentList.Contains("number")) ToggleNumber.isOn = true;
-            if (ContentList.Contains("shape")) ToggleShape.isOn = true;
-            if (ContentList.Contains("food")) ToggleFood.isOn = true;
-            if (ContentList.Contains("fruit")) ToggleFruit.isOn = true;
-            **/
+
+            ArrayList bContent = new ArrayList(ReadIniPargetParme.Content.Split(','));
+            //if (!String.IsNullOrEmpty(ReadIniPargetParme.Content)) {
+            //    SelectContent.ContentList = bContent;
+            //}
+            Toggle Content_A = GameObject.Find("Content_A").transform.GetComponentsInChildren<Toggle>()[0];
+            Toggle Content_FiveShape = GameObject.Find("Content_FiveShape").transform.GetComponentsInChildren<Toggle>()[0];
+            Toggle Content_Star = GameObject.Find("Content_Star").transform.GetComponentsInChildren<Toggle>()[0];
+            if (bContent.Contains("A")) Content_A.isOn = true;
+            if (bContent.Contains("FiveShape")) Content_FiveShape.isOn = true;
+            if (bContent.Contains("Star")) Content_Star.isOn = true;
             #endregion 初始化内容选择
-            //写入Count类型count值对应的数值（如果存在了相同的key会覆盖原来key的内容）
-            //MyIni.WritePrivateProfileString("GameContent", "LengthofTime", LengthofTime.toString(), strpersistentDataPath);
-            //MyIni.WritePrivateProfileString("GameContent", "Speed", speed.toString(), strpersistentDataPath);
         }
         catch (Exception ex)
         {

@@ -2,16 +2,17 @@
 using System.Collections;
 
 
-public class SelectTrainDifficulty : MonoBehaviour {
+public class SelectTrainDifficulty : MonoBehaviour
+{
 
     public static int TrainDifficulty = -1;
 
     public void setTrainDifficulty(int selected)
     {
-        string strpersistentDataPath = Application.persistentDataPath + "/oliverData.ini";
 
         TrainDifficulty = selected;
-        Assets.Script.MyIni.WritePrivateProfileString("GameContent", "Speed", TrainDifficulty.toString(), strpersistentDataPath);
+        Assets.Script.MyIni ini = new Assets.Script.MyIni();
+        ini.WriteIniContent("GameContent", "Speed", TrainDifficulty.toString());
 
         Debug_Log.Call_WriteLog("TrainDifficulty=" + TrainDifficulty, selected.toString(), "Unity");
         Debug.Log(selected);
@@ -22,8 +23,8 @@ public class SelectTrainDifficulty : MonoBehaviour {
         //else {
         //}
     }
-    
-   
+
+
     // Use this for initialization
 
 }

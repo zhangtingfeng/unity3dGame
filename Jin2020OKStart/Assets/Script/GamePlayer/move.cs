@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using UnityEditor;
 using UnityEngine;
 
 
@@ -96,26 +95,48 @@ public class move : MonoBehaviour
                     floatMoveMi = 200;
                     break;
             }
+            string strContent = ReadIniPargetParme.Content;
+            if (String.IsNullOrEmpty(strContent)) strContent = "A";
+            ArrayList bContentArrayList = new ArrayList(strContent.Split(','));
+
+            GameObject canvas = GameObject.Find("GameEnemyObject");
+            ArrayList cShiftArrayList = Common.getShiftArrayList(intAllNum, bContentArrayList);
+            Debug_Log.Call_WriteLog(string.Join(",", (string[])cShiftArrayList.ToArray(typeof(string))), "随机图形表示");
 
             for (int i = 0; i < intAllNum; i++)
             {
-                GameObject EnemyGame = (GameObject)Resources.Load("Pref/EnemyGame");
-                EnemyGame = Instantiate(EnemyGame);
-                EnemyGame.name = "Cube";
+                GameObject gameObjectEnemyGame = (GameObject)Resources.Load("Pref/EnemyGame");
+                gameObjectEnemyGame = Instantiate(gameObjectEnemyGame);
+                gameObjectEnemyGame.name = "myCube" + i.toString();
+
+                /// 查找子物体，并且将得到的物体转换成gameobject
+                GameObject objnameFindChild = gameObjectEnemyGame.transform.Find("Cube").gameObject;
+                #region 动态材质球
+                //System.Random ran = new System.Random();
+                //int RandKey = ran.Next(0, bContentArrayList.Count);
+                string strLoad = "OuterDATA/GameEnemy_" + cShiftArrayList[i];
 
 
-                GameObject canvas = GameObject.Find("GameEnemyObject");
-                EnemyGame.transform.parent = canvas.transform;
-                //EnemyGame.transform.Rotate(new Vector3(0, 1, 0));  //绕y轴旋转
+                //Material mddddMaterial = Instantiate(lastMat) as Material;
+
+                Texture mat = Resources.Load(strLoad) as Texture;
+                objnameFindChild.GetComponent<Renderer>().material.mainTexture = mat;
+
+                // mddddMaterial.mainTexture = mat;
+                #endregion
+
+
+
+
+                gameObjectEnemyGame.transform.parent = canvas.transform;
                 Quaternion rotation = Quaternion.Euler(new Vector3(0, 180, 0));
-                //EnemyGame.transform.Rotate(new Vector3(0, 0, 1));  //绕y轴旋转
-                EnemyGame.transform.rotation = rotation;
+                gameObjectEnemyGame.transform.rotation = rotation;
 
-
+                #region 对左右位置进行随机 
                 int intddd = UnityEngine.Random.Range(-10, 10);///左右随机摆动的
-                //intddd = 0;
                 Vector3 unitVector = new Vector3(56.72f + intddd, 2, 10.15f + i * 3);
-                //EnemyGame.transform.Quaternion = Quaternion.Euler(0.0f, 0.0f, 1.0f);
+                gameObjectEnemyGame.transform.position = unitVector;
+                #endregion 
 
                 //  用 slerp 进行插值平滑的旋转
                 //transform.rotation = Quaternion.Slerp(transform.rotation, targetAngels, rotateSpeed * Time.deltaTime);
@@ -123,16 +144,12 @@ public class move : MonoBehaviour
 
 
 
-                EnemyGame.transform.position = unitVector;
+
             }
-            Texture mat = Resources.Load("OuterDATA/GameEnemy_FiveShape") as Texture;
-            //MeshRenderer dddmeshRenderer = Resources.Load("OuterDATA/GameEnemyMoney") as MeshRenderer;
-            Material ddddMaterial = Resources.Load("OuterDATA/GameEnemyMoney") as Material;
-            //ddddMaterial.mainTexture = AssetDatabase.LoadAssetAtPath<Texture>("GameEnemy_A");
-            ddddMaterial.mainTexture = mat;
-            //将贴图赋给材质球的properties属性
-            //ddddMaterial.SetTexture("_BumpMap", mat);
-            //mat.mainTexture = Resources.Load("OuterDATA/GameEnemyMoney") as Texture2D;
+
+
+
+
 
             Score.iniSucessPercent(intAllNum);
             Debug_Log.Call_WriteLog(intAllNum.toString(), "class move");

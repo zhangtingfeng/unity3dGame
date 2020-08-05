@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using System.Net;
 using System.Runtime.InteropServices;
+using System.Collections;
 
 /// <summary>
 ///Subscribe 的摘要说明
@@ -91,5 +92,50 @@ public class Common
         //原文链接：https://blog.csdn.net/sinat_23079759/java/article/details/53159858
 
     }
+
+
+
+
+    #region 得到一个随机数组
+    public static ArrayList getShiftArrayList(int intMaxNum, ArrayList bContentArrayList)
+    {
+        ArrayList bReturnArrayList = new ArrayList();
+        ArrayList bgetArrayList = getArrayList(intMaxNum, bContentArrayList);
+        for (int i = 0; i < intMaxNum; i++)
+        {
+            System.Random ran = new System.Random();
+            int RandKey = ran.Next(0, bgetArrayList.Count);
+            String straddkey = bgetArrayList[RandKey].toString();
+            bReturnArrayList.Add(straddkey);
+            bgetArrayList.RemoveAt(RandKey);
+        }
+
+
+
+        return bReturnArrayList;
+    }
+    public static ArrayList getArrayList(int intMaxNum, ArrayList bContentArrayList)
+    {
+        ArrayList bReturnArrayList = new ArrayList();
+        int i = 0;
+
+        while (i < intMaxNum)
+        {
+            for (int j = 0; j < bContentArrayList.Count; j++)
+            {
+                if (i < intMaxNum)
+                {
+                    bReturnArrayList.Add(bContentArrayList[j]);
+                    i++;
+                }
+            }
+        }
+
+        return bReturnArrayList;
+    }
+
+
+    #endregion
+
 }
 

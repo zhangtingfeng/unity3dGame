@@ -34,26 +34,19 @@ namespace Assets.Script
 
             #region 获取参数
             //获取ini文件
-            //string strINTI = Application.streamingAssetsPath + "/oliverData.ini";
-            string strpersistentDataPath = Application.persistentDataPath + "/oliverData.ini";
-            //if (!File.Exists(strpersistentDataPath))
-            //{
-            //    File.WriteAllText(strpersistentDataPath, "");
-            //}
+
             int LengthofTime = 0;
             int speed = 0;
-            Debug_Log.Call_WriteLog(strpersistentDataPath, "selected.toString()", "Unity");
-            MyIni ini;
-
-            ini = new MyIni(strpersistentDataPath);
+            MyIni ini = new MyIni();
             //获取Ini文件Time类型下的time对应的数值
-            LengthofTime = ini.ReadIniContent("GameContent", "LengthofTime").toInt32();
-            speed = ini.ReadIniContent("GameContent", "Speed").toInt32();
+            LengthofTime = ini.ReadIniContent("GameContent", "LengthofTime").toInt32();///SelectTrainTime
+            speed = ini.ReadIniContent("GameContent", "Speed").toInt32();///SelectTrainDifficulty
             string strContent = ini.ReadIniContent("GameContent", "Content");
             #endregion 获取参数
             ddReadIniPardd.LengthofTime = LengthofTime;
             ddReadIniPardd.speed = speed;
             ddReadIniPardd.Content = strContent;
+            Debug_Log.Call_WriteLog(ddReadIniPardd, "读取的strpersistentDataPath", "Unity");
 
 
             return ddReadIniPardd;
@@ -64,14 +57,16 @@ namespace Assets.Script
     public class MyIni
     {
         public string path;//ini文件的路径
-        public MyIni(string path)
-        {
-            this.path = path;
+        public MyIni()
+        {///C:/Users/Administrator/AppData/LocalLow/DefaultCompany/Chen2020Test01/oliverData.ini
+            string strpersistentDataPath = Application.persistentDataPath + "/oliverData.ini";
+
+            this.path = strpersistentDataPath;
         }
         [DllImport("kernel32")]
-        public static extern long WritePrivateProfileString(string section, string key, string value, string path);
+        private static extern long WritePrivateProfileString(string section, string key, string value, string path);
         [DllImport("kernel32")]
-        public static extern int GetPrivateProfileString(string section, string key, string deval, StringBuilder stringBuilder, int size, string path);
+        private static extern int GetPrivateProfileString(string section, string key, string deval, StringBuilder stringBuilder, int size, string path);
 
 
 

@@ -15,6 +15,30 @@ public class Debug_Log
     /// <summary>
     /// 写日志(用于跟踪)
     /// </summary>
+    public static string Call_WriteLog(object errorCall_WriteLog, string strLogs_SubSubject = "", string strTypename = "")
+    {
+        string strReturn = "";
+        try
+        {
+            string strJsonSerializer = Newtonsoft.Json.JsonConvert.SerializeObject(errorCall_WriteLog);
+
+
+            Call_WriteLog(strJsonSerializer, strLogs_SubSubject+"对象序列化", strTypename);
+        }
+        catch
+        {
+        }
+        finally
+        {
+            //if (sr != null)
+            //    sr.Close();
+        }
+        return strReturn;
+    }
+
+    /// <summary>
+    /// 写日志(用于跟踪)
+    /// </summary>
     public static string Call_WriteLog(Exception error, string strLogs_SubSubject = "", string strTypename = "")
     {
         string strReturn = "";
