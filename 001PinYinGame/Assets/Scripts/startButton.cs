@@ -18,6 +18,7 @@ public class startButton : MonoBehaviour
     const float devHeight = 9.6f;
     const float devWidth = 6.4f;
 
+    Assets.Script.PunPinYin.StaticGlobal StaticGlobalService = new Assets.Script.PunPinYin.StaticGlobal();
 
     void Start()
     {
@@ -69,6 +70,9 @@ public class startButton : MonoBehaviour
 
 
     void goMainSelect() {
+        //StaticGlobalService.getTargetItemListPath();
+
+
         SceneManager.LoadScene("Select");
     }
 

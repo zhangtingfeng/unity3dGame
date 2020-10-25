@@ -52,10 +52,21 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\backMusic.cs" />
+     <Compile Include="Assets\Scripts\Pub\Common.cs" />
+     <Compile Include="Assets\Scripts\Pub\debug_Log.cs" />
+     <Compile Include="Assets\Scripts\Pub\EXManager.cs" />
+     <Compile Include="Assets\Scripts\Pub\MessageBOX.cs" />
+     <Compile Include="Assets\Scripts\Pub\MyIni.cs" />
+     <Compile Include="Assets\Scripts\Pub\ObjectExtended.cs" />
+     <Compile Include="Assets\Scripts\Pub\SQLiteHelper.cs" />
+     <Compile Include="Assets\Scripts\Pub\SQLiteHelper_Example.cs" />
+     <Compile Include="Assets\Scripts\Pub\TestSD.cs" />
+     <Compile Include="Assets\Scripts\PunPinYin\StaticGlobal.cs" />
      <Compile Include="Assets\Scripts\SelectButton.cs" />
      <Compile Include="Assets\Scripts\startButton.cs" />
      <Compile Include="Assets\Scripts\UICamera.cs" />
-     <None Include="Assets\externalResources\001GameResource\b\01OneSyllable\01\01Text.txt" />
+     <None Include="Assets\StreamingAssets\001GameResource\b\01OneSyllable\01\01Text.txt" />
+     <None Include="Assets\StreamingAssets\001GameResource\b\01OneSyllable\02\01Text.txt" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>D:/Program Files/Unity20170416/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
  </Reference>
@@ -223,6 +234,33 @@
  </Reference>
  <Reference Include="UnityEngine.SpatialTracking">
  <HintPath>D:/Program Files/Unity20170416/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="Excel">
+ <HintPath>E:/WorksUnityGame/001PinYinGame/Assets/Plugins/Excel.dll</HintPath>
+ </Reference>
+ <Reference Include="I18N.CJK">
+ <HintPath>E:/WorksUnityGame/001PinYinGame/Assets/Plugins/I18N.CJK.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.SharpZipLib">
+ <HintPath>E:/WorksUnityGame/001PinYinGame/Assets/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Data">
+ <HintPath>E:/WorksUnityGame/001PinYinGame/Assets/Plugins/Mono.Data.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Data.Sqlite">
+ <HintPath>E:/WorksUnityGame/001PinYinGame/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>E:/WorksUnityGame/001PinYinGame/Assets/Plugins/Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Data">
+ <HintPath>E:/WorksUnityGame/001PinYinGame/Assets/Plugins/System.Data.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Drawing">
+ <HintPath>E:/WorksUnityGame/001PinYinGame/Assets/Plugins/System.Drawing.dll</HintPath>
+ </Reference>
+ <Reference Include="System.EnterpriseServices">
+ <HintPath>E:/WorksUnityGame/001PinYinGame/Assets/Plugins/System.EnterpriseServices.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>C:/Users/Administrator/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
