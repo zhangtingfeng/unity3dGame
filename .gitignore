@@ -32,5 +32,11 @@ build/
 
 
 ### Unity ###
-/001PinYinGame/Library/
-/001PinYinGame/Temp/
+
+
+001PinYinGame/Library
+001PinYinGame/obj
+001PinYinGame/out
+001PinYinGame/ProjectSettings
+001PinYinGame/Temp
+
