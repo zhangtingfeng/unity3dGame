@@ -1,37 +1,47 @@
-﻿using System.Collections;
+﻿using Assets.Script.PunPinYin;
+using Assets.Scripts.PunPinYin;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class selectButton : MonoBehaviour
+public class SelectButton : Assets.Scripts.PunPinYin.pubButton
 {
-    public GUISkin mySkin;
-    public AudioClip menuSound;
-   
-    private Rect newGamePosition = new Rect(800, 205, 208, 60);
-    private Rect howToPlayPosition = new Rect(800, 305, 208, 60);
-    private Rect moreGamePosition = new Rect(800, 405, 208, 60);
-    // Use this for initialization
 
-    const float devHeight = 9.6f;
-    const float devWidth = 6.4f;
+
+
 
 
     void Start()
     {
-       /* float screenHeight = Screen.height;
-        float screenWidth = Screen.width;
-        float orthpgraphicSize = this.GetComponent<Camera>().orthographicSize;
-        float aspectRatio = screenWidth * 1.0f / screenHeight;
-        float cameraWidth = orthpgraphicSize * 2 * aspectRatio;
 
-        if (cameraWidth < devWidth) {
-            orthpgraphicSize = devWidth / (2 * aspectRatio);
-            this.GetComponent<Camera>().orthographicSize = orthpgraphicSize;
-        }*/
+        myButtonSelctList = new ButtonSelect[10];
+        myButtonSelctList[0] = new ButtonSelect { buttonName = "DrawRed", left = 524, top = 165 };
+        myButtonSelctList[1] = new ButtonSelect { buttonName = "PlateDraw", left = 524, top = 228 };
+        myButtonSelctList[2] = new ButtonSelect { buttonName = "VertiDraw", left = 524, top = 299 };
+        myButtonSelctList[3] = new ButtonSelect { buttonName = "SoundModel", left = 524, top = 366 };
+        myButtonSelctList[4] = new ButtonSelect { buttonName = "OneWord", left = 752, top = 136 };
+        myButtonSelctList[5] = new ButtonSelect { buttonName = "TwoWord", left = 752, top = 199 };
+        myButtonSelctList[6] = new ButtonSelect { buttonName = "ThreeWord", left = 752, top = 275 };
+        myButtonSelctList[7] = new ButtonSelect { buttonName = "Story", left = 752, top = 338 };
+        myButtonSelctList[8] = new ButtonSelect { buttonName = "Scan", left = 752, top = 402 };
+        myButtonSelctList[9] = new ButtonSelect { buttonName = "Exit", left = 18, top = 479 };
+    }
 
+    override
+    public void MainSelect(string strWhich)
+    {
+        //StaticGlobalService.getTargetItemListPath();
+        switch (strWhich)
+        {
+            case "Exit":
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Start");
+                break;
+        }
+        // UnityEngine.SceneManagement.SceneManager.LoadScene(strWhich);
     }
 
     // Update is called once per frame
@@ -41,36 +51,6 @@ public class selectButton : MonoBehaviour
     }
 
 
-    void OnGUI()
-    {
-        GUI.skin = mySkin;
-
-        if (GUI.Button(newGamePosition, "", GUI.skin.GetStyle("author")))
-        {
-            UnityAction action = new UnityAction(goMainSelect);
-            PlayAudio(menuSound, action);
-
-            
-        }
-
-        if (GUI.Button(howToPlayPosition, "", GUI.skin.GetStyle("begin")))
-        {
-            UnityAction action = new UnityAction(goMainSelect);
-            PlayAudio(menuSound);
-
-        }
-
-        if (GUI.Button(moreGamePosition, "", GUI.skin.GetStyle("exit"))) {
-            UnityAction action = new UnityAction(goMainSelect);
-            PlayAudio(menuSound);
-        }
-
-    }
-
-
-    void goMainSelect() {
-        SceneManager.LoadScene("MainSelect");
-    }
 
 
 
@@ -78,29 +58,4 @@ public class selectButton : MonoBehaviour
 
 
 
-
-
-    #region  播放按钮声音
-    public void PlayAudio(AudioClip clip, UnityAction callback = null, bool isLoop = false)
-    {
-        AudioSource.PlayClipAtPoint(clip, new Vector3(0, 0, 0));
-        //执行协成获取音频文件的时间
-        StartCoroutine(AudioPlayFinished(clip.length, callback));
-    }
-
-
-
-    IEnumerator AudioPlayFinished(float time, UnityAction callback = null)
-    {
-        Debug.Log("检测，继续向下执行");
-        yield return new WaitForSeconds(time);
-        Debug.Log("声音播放完毕，继续向下执行");
-        callback();
-        //yield WaitForSeconds(menuSound.length);
-        //SceneManager.LoadScene("MainSelect");
-        //SceneManager.LoadScene(1);
-        // Application.LoadLevel(1);
-
-    }
-    #endregion  播放按钮声音
 }

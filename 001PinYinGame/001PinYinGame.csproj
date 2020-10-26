@@ -13,12 +13,14 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2017.4.26f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -269,6 +271,9 @@
     <Compile Include="Assets\Scripts\Pub\SQLiteHelper.cs" />
     <Compile Include="Assets\Scripts\Pub\SQLiteHelper_Example.cs" />
     <Compile Include="Assets\Scripts\Pub\TestSD.cs" />
+    <Compile Include="Assets\Scripts\PunPinYin\ButtonSelect.cs" />
+    <Compile Include="Assets\Scripts\PunPinYin\CountAdjustScreen.cs" />
+    <Compile Include="Assets\Scripts\PunPinYin\pubButton.cs" />
     <Compile Include="Assets\Scripts\PunPinYin\StaticGlobal.cs" />
     <Compile Include="Assets\Scripts\SelectButton.cs" />
     <Compile Include="Assets\Scripts\startButton.cs" />
