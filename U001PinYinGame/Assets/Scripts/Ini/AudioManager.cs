@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class AudioManager : MonoBehaviour
 {
@@ -12,8 +13,11 @@ public class AudioManager : MonoBehaviour
     public AudioSource SoundPlayer;
     void Start()
     {
-        Am = this;
-     PlaySound("C:/tmp/333.wav");
+
+        StartCoroutine( IELoadExternalAudioWebRequest("C:/tmp/333.wav", AudioType.WAV));
+
+        //Am = this;
+        //PlaySound("333");
     }
 
     // Update is called once per frame
@@ -40,5 +44,38 @@ public class AudioManager : MonoBehaviour
         AudioClip clip = Resources.Load<AudioClip>(name);
         SoundPlayer.clip = clip;
         SoundPlayer.PlayOneShot(clip);
+    }
+
+
+
+    private IEnumerator IELoadExternalAudioWebRequest(string _url, AudioType _audioType)
+    {
+        UnityWebRequest _unityWebRequest = UnityWebRequestMultimedia.GetAudioClip(_url, _audioType);
+        yield return _unityWebRequest.SendWebRequest();
+        if (_unityWebRequest.isHttpError || _unityWebRequest.isNetworkError)
+        {
+            Debug.Log(_unityWebRequest.error.ToString());
+        }
+        else
+        {
+            AudioClip _audioClip = DownloadHandlerAudioClip.GetContent(_unityWebRequest);
+            SoundPlayer.clip = _audioClip;
+            SoundPlayer.Play();
+        }
+    }
+    private IEnumerator IELoadExternalAudioWWW(string _url, AudioType _audioType)
+    {
+        WWW _www = new WWW(_url);
+        yield return _www;
+        if (_www.error == null)
+        {
+            AudioClip _audioClip = _www.GetAudioClip(true, true, _audioType);
+            SoundPlayer.clip = _audioClip;
+            SoundPlayer.Play();
+        }
+        else
+        {
+            Debug.Log(_www.error);
+        }
     }
 }
