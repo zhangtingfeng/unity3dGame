@@ -45,6 +45,41 @@ public class MicroPhoneInput : MonoBehaviour
 
     string micName;
 
+
+
+    private AudioSource aud;
+
+    public IEnumerator LoadAudio(string recordPath)
+    {
+        // www 加载音频
+        WWW www = new WWW(recordPath);
+        yield return www;
+        var clipTemp = www.GetAudioClip();
+        aud.clip = clipTemp;
+
+        //yield return new WaitForSeconds(5);
+        //aud.loop = true;
+
+        //播放音频
+        aud.Play();
+    }
+
+    void Start()
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        // Android 测试路径
+        string filePath = "file:///sdcard/msc/test_13.wav";
+        Debug.LogError(filePath);
+#endif
+
+#if UNITY_EDITOR
+        // Unity Editor 测试路径
+        string filePath = "E:/WorksUnityGame/U001PinYinGame/externalResources/001GameResource/b/01OneSyllable/01/01.wav";
+#endif
+
+        //StartCoroutine(LoadAudio(filePath));
+
+    }
     public void StartMicrophone()
     {
         StopCoroutine(StartMicrophone(null, PlayAudioRecord));
