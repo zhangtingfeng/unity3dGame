@@ -13,8 +13,16 @@ namespace Assets.Script.PunPinYin
     public class StaticGlobal
 
     {
+
         /// <summary>
-        /// 训练的目标词
+        /// 训练的目标词  缺省目录
+        /// </summary>
+        public static String SelectDestinationTargetWindowsPath = "C:\\C_ResourcePath";
+
+
+
+        /// <summary>
+        /// 训练的目标词  缺省目录
         /// </summary>
         public static String SelectDestinationTargetWord = "b";
 
