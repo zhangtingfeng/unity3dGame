@@ -17,7 +17,7 @@ namespace Assets.Script.PunPinYin
         /// <summary>
         /// 训练的目标词  缺省目录
         /// </summary>
-        public static String RootWindowPath = "C:/Works/unity3dGame/U001PinYinGame/externalResources/001GameResource";
+        public static String RootWindowPath = "externalResources/001GameResource";
         /// <summary>
         /// 训练的目标词  缺省目标目录 
         /// </summary>
@@ -54,6 +54,22 @@ namespace Assets.Script.PunPinYin
         /// </summary>
         public static Int64 TimeDuratation = 0;
 
+
+
+        public static String getOneLetterPath()
+        {
+            string strWindowsHeadPath = "C:/Works/unity3dGame/U001PinYinGame";
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                strWindowsHeadPath = (new TestSD()).getStoragePath();
+            }
+
+            String strgetOneLetterPath = strWindowsHeadPath + "/" + StaticGlobal.RootWindowPath + "/" + StaticGlobal.SelectDestinationTargetWord + "/" + StaticGlobal.SelectDestinationTargetItem + "/" + StaticGlobal.SelectTargetItemNum;
+            Debug.Log("strgetOneLetterPath=" + strgetOneLetterPath);
+            
+            return strgetOneLetterPath;
+
+        }
 
         public void getTargetItemListPath()
         {
@@ -93,7 +109,7 @@ namespace Assets.Script.PunPinYin
                 ///Unity\Editor\Data\PlaybackEngines\AndroidPlayer\Apk
 
 
-                Debug_Log.Call_WriteLog(Application.streamingAssetsPath+Directory.Exists(Application.streamingAssetsPath).toString(), " 1Application.streamingAssetsPath", "001PinYIn");
+                Debug_Log.Call_WriteLog(Application.streamingAssetsPath + Directory.Exists(Application.streamingAssetsPath).toString(), " 1Application.streamingAssetsPath", "001PinYIn");
                 Debug_Log.Call_WriteLog(Directory.Exists(Application.streamingAssetsPath + "001GameResource/"), " 2 Application.streamingAssetsPath", "001PinYIn");
                 Debug_Log.Call_WriteLog(Directory.Exists(Application.streamingAssetsPath + "!/assets/001GameResource/"), "3 Application.streamingAssetsPath", "001PinYIn");
 
@@ -114,7 +130,7 @@ namespace Assets.Script.PunPinYin
             }
 
 
-            string path = strAppPath+ "/externalResources/" + "001GameResource/" + SelectDestinationTargetWord + "/" + SelectDestinationTargetItem;
+            string path = strAppPath + "/externalResources/" + "001GameResource/" + SelectDestinationTargetWord + "/" + SelectDestinationTargetItem;
             Debug_Log.Call_WriteLog(Application.dataPath, "Application.dataPath", "001PinYIn");
 
 

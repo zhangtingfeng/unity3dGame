@@ -10,15 +10,14 @@ using UnityEngine.UI;
 public class DrawRedCameraIni : MonoBehaviour
 {
     public Text myText;
-    public RawImage RawImage;
-
+    
 
     void Start()
     {
 
 
 
-        string strPath = StaticGlobal.RootWindowPath + "/" + StaticGlobal.SelectDestinationTargetWord + "/" + StaticGlobal.SelectDestinationTargetItem + "/" + StaticGlobal.SelectTargetItemNum;
+        string strPath = StaticGlobal.getOneLetterPath();
 
 
         String strTextPath = strPath + "/01.txt";
@@ -29,9 +28,7 @@ public class DrawRedCameraIni : MonoBehaviour
         //myPlayLocalFileSound.PlayLocalFile(audioSource, straudioPath);
 
 
-        String strImgPath = strPath + "/01.png";
-        LoadRawImage myLoadRawImage = new LoadRawImage();
-        myLoadRawImage.showLocalFile(RawImage, strImgPath);
+       
 
     }
     /*

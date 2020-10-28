@@ -11,14 +11,14 @@ public class UICamera : MonoBehaviour
     public Text myText;
     public Camera nguiCamera;
 
-    Assets.Script.PunPinYin.StaticGlobal StaticGlobalService = new Assets.Script.PunPinYin.StaticGlobal();
+   
 
     void Start()
     {
         //Screen.SetResolution(1280, 720, true);
 
         //	Screen.fullScreen = true;  //设置成全屏,
-        string strPath = StaticGlobal.RootWindowPath + "/" + StaticGlobal.SelectDestinationTargetWord + "/" + StaticGlobal.SelectDestinationTargetItem + "/" + StaticGlobal.SelectTargetItemNum;
+        string strPath = StaticGlobal.getOneLetterPath();
         strPath += "/01.txt";
 
 
@@ -55,7 +55,7 @@ public class UICamera : MonoBehaviour
             Debug.Log(myText.text);
             try
             {
-                StaticGlobalService.getTargetItemListPath();
+                //StaticGlobal.getTargetItemListPath();
             }
             catch (System.Exception weee)
             {

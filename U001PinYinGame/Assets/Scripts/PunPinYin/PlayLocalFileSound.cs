@@ -17,7 +17,7 @@ public class PlayLocalFileSound : MonoBehaviour
     public AudioSource audioSource;
     void Start()
     {
-        string strPath = StaticGlobal.RootWindowPath + "/" + StaticGlobal.SelectDestinationTargetWord + "/" + StaticGlobal.SelectDestinationTargetItem + "/" + StaticGlobal.SelectTargetItemNum;
+        string strPath = StaticGlobal.getOneLetterPath();
         String straudioPath = strPath + "/01.wav";
         PlayLocalFile(straudioPath);
     }

@@ -124,7 +124,7 @@ public class MicroPhoneInput : MonoBehaviour
 
 #if UNITY_ANDROID && !UNITY_EDITOR
         // Android 测试路径
-        string filePath = "file:///sdcard/msc/test_13.wav";
+        filePath = "file:///sdcard/msc/test_13.wav";
         Debug.LogError(filePath);
 #endif
 
