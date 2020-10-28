@@ -23,7 +23,7 @@ namespace Assets.Scripts.PunPinYin
         void OnGUI()
         {
             GUI.skin = mySkin;
-            if (myButtonSelctList.Length < 1) return;
+            if (myButtonSelctList==null ||  myButtonSelctList.Length < 1) return;
             for (int i = 0; i < myButtonSelctList.Length; i++)
             {
                 ButtonSelect myButtonSelct = myButtonSelctList[i];

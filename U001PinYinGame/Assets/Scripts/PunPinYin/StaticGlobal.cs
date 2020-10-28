@@ -17,21 +17,19 @@ namespace Assets.Script.PunPinYin
         /// <summary>
         /// 训练的目标词  缺省目录
         /// </summary>
-        public static String SelectDestinationTargetWindowsPath = "C:\\C_ResourcePath";
-
-
-
+        public static String RootWindowPath = "C:/Works/unity3dGame/U001PinYinGame/externalResources/001GameResource";
         /// <summary>
-        /// 训练的目标词  缺省目录
+        /// 训练的目标词  缺省目标目录 
         /// </summary>
         public static String SelectDestinationTargetWord = "b";
-
-
         /// <summary>
         /// 训练的目标项
         /// </summary>
         public static String SelectDestinationTargetItem = "01OneSyllable";
-
+        /// <summary>
+        /// 训练的目标项 顺序
+        /// </summary>
+        public static String SelectTargetItemNum = "01";
 
         /// <summary>
         /// 目标词的路径

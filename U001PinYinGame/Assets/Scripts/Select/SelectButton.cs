@@ -43,6 +43,9 @@ public class SelectButton : Assets.Scripts.PunPinYin.pubButton
             case "Exit":
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Start");
                 break;
+            case "DrawRed":
+                UnityEngine.SceneManagement.SceneManager.LoadScene("DrawRed");
+                break;
         }
         // UnityEngine.SceneManagement.SceneManager.LoadScene(strWhich);
     }

@@ -9,7 +9,7 @@ public class IniJumptoStart : MonoBehaviour {
 	void Start () {
 
        
-        //SceneManager.LoadScene("Start");
+        SceneManager.LoadScene("Start");
     }
 	
 	// Update is called once per frame

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Script.PunPinYin;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,8 +18,11 @@ public class UICamera : MonoBehaviour
         //Screen.SetResolution(1280, 720, true);
 
         //	Screen.fullScreen = true;  //设置成全屏,
+        string strPath = StaticGlobal.RootWindowPath + "/" + StaticGlobal.SelectDestinationTargetWord + "/" + StaticGlobal.SelectDestinationTargetItem + "/" + StaticGlobal.SelectTargetItemNum;
+        strPath += "/01.txt";
 
 
+        string StrContent = Assets.Scripts.Pub.ReadFileTxtContent.ReadText(strPath);
         //Resolution[] resolutions = Screen.resolutions;//获取设置当前屏幕分辩率
         //Debug.Log("resolutions " + resolutions);
         //Screen.SetResolution(resolutions[resolutions.Length - 1].width, resolutions[resolutions.Length - 1].height, true);//设置当前分辨率
@@ -62,9 +66,9 @@ public class UICamera : MonoBehaviour
             TestSD dddd = new TestSD();
             dddd.ReadSD();
             dddd.WriteSD();
-           // dddd.getStoragePath();
+            // dddd.getStoragePath();
 
-    //private string getStoragePath()
+            //private string getStoragePath()
             //Debug.Log("dddffff dddfffff "+nguiCamera.aspect+"   "+Screen.width+"   "+Screen.height);
 
         }

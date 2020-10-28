@@ -47,25 +47,81 @@ public class MicroPhoneInput : MonoBehaviour
 
 
 
-    private AudioSource aud;
+    //private AudioSource aud;
+
+
+    private void Start()
+    {
+
+        //audioSource.clip = (AudioClip)Resources.Load("333", typeof(AudioClip));
+        //audioSource.Play();
+
+
+        //StartCoroutine(LoadAudioNew("D:/temp/wav1.wav"));
+
+        //string audioPath = "D:/temp/Alarm01.wav";
+        //PlayLocalFile(audioPath);
+
+    }
+    
 
     public IEnumerator LoadAudio(string recordPath)
     {
         // www 加载音频
         WWW www = new WWW(recordPath);
-        yield return www;
+        //yield return www;
         var clipTemp = www.GetAudioClip();
-        aud.clip = clipTemp;
+        audioSource.clip = clipTemp;
 
-        //yield return new WaitForSeconds(5);
-        //aud.loop = true;
+
 
         //播放音频
-        aud.Play();
+        audioSource.Play();
+
+       yield return new WaitForSeconds(5);
+       // aud.loop = true;
     }
 
-    void Start()
+    public void Play(string str)
+
     {
+        AudioClip clip = (AudioClip)Resources.Load(str, typeof(AudioClip));//调用Resources方法加载AudioClip资源
+        
+        PlayAudioClip(clip);
+
+    }
+
+    public void PlayAudioClip(AudioClip clip)
+
+    {
+        if (clip == null)
+
+            return;
+        //gameObject.SetActive(true);
+        AudioSource source = (AudioSource)gameObject.GetComponent("AudioSource");
+        source.gameObject.SetActive(true);
+        if (source == null)
+
+            source = (AudioSource)gameObject.AddComponent<AudioSource>();
+
+        source.clip = clip;
+
+        //source.minDistance = 1.0f;
+
+        //source.maxDistance = 50;
+
+        //source.rolloffMode = AudioRolloffMode.Linear;
+
+        //source.transform.position = transform.position;
+
+        source.Play();
+
+    }
+
+    void PlaySound()
+    {
+        string filePath = "";
+
 #if UNITY_ANDROID && !UNITY_EDITOR
         // Android 测试路径
         string filePath = "file:///sdcard/msc/test_13.wav";
@@ -74,10 +130,10 @@ public class MicroPhoneInput : MonoBehaviour
 
 #if UNITY_EDITOR
         // Unity Editor 测试路径
-        string filePath = "E:/WorksUnityGame/U001PinYinGame/externalResources/001GameResource/b/01OneSyllable/01/01.wav";
+         filePath = "333";
 #endif
 
-        //StartCoroutine(LoadAudio(filePath));
+        StartCoroutine(LoadAudio(filePath));
 
     }
     public void StartMicrophone()
@@ -528,7 +584,9 @@ public class MicroPhoneInput : MonoBehaviour
         {
             if (ShowGUIButton("获取麦克风设备"))
             {
-                GetMicrophoneDevice();
+                Play("333");
+                //PlaySound();
+                //GetMicrophoneDevice();
             }
         }
         else if (DeviceLength > 0)
