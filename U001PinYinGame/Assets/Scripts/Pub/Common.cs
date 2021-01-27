@@ -92,8 +92,6 @@ public class Common
     }
 
 
-
-
     #region 得到一个随机数组
     public static ArrayList getShiftArrayList(int intMaxNum, ArrayList bContentArrayList)
     {
