@@ -10,20 +10,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class LoadRawImage : MonoBehaviour
+public class LoadRawImage 
 {
-    public RawImage RawImage;
+   // public RawImage RawImage;
 
-    void Start()
+   /* void Start()
     {
 
-        string strPath = StaticGlobal.getOneLetterPath();
+        string strPath = Path.Combine(StaticGlobal.getLetterPath(), "01.png");
 
-        String strImgPath = strPath + "/01.png";
-        LoadRawImage myLoadRawImage = new LoadRawImage();
-        myLoadRawImage.showLocalFile(RawImage, strImgPath);
+        //String strImgPath = strPath + "/01.png";
+     //   LoadRawImage myLoadRawImage = new LoadRawImage();
+       // myLoadRawImage.showLocalFile(RawImage, strImgPath);
     }
-
+   */
     public void showLocalFile(RawImage argRawImage, String FilePath)
     {
         String url = "file:///" + FilePath;
@@ -35,7 +35,7 @@ public class LoadRawImage : MonoBehaviour
 
 
 
-    public WWW Download(string path)
+    private WWW Download(string path)
     {
         WWW www = new WWW(path);
 

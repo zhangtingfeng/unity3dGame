@@ -15,12 +15,7 @@ using UnityEngine.UI;
 public class PlayLocalFileSound : MonoBehaviour
 {
     public AudioSource audioSource;
-    void Start()
-    {
-        string strPath = StaticGlobal.getOneLetterPath();
-        String straudioPath = strPath + "/01.wav";
-        PlayLocalFile(straudioPath);
-    }
+   
 
 
     public void PlayLocalFile(string audioPath)
@@ -32,6 +27,17 @@ public class PlayLocalFileSound : MonoBehaviour
             audioSource.clip = audioClip;
             audioSource.Play();
         }));
+    }
+
+    public void stopPlayLocalFile()
+    {
+        //var exists = File.Exists(audioPath);
+        ////Debug.LogFormat("{0}，存在:{1}", audioPath, exists);
+        //StartCoroutine(LoadAudio(audioPath, (audioClip) =>
+        //{
+        //    audioSource.clip = audioClip;
+            audioSource.Stop();
+        //}));
     }
 
     IEnumerator LoadAudio(string filePath, Action<AudioClip> loadFinish)

@@ -29,7 +29,7 @@ namespace Assets.Script.PunPinYin
         /// <summary>
         /// 训练的目标项 顺序
         /// </summary>
-        public static String SelectTargetItemNum = "01";
+        //public static String SelectTargetItemNum = "01";
 
         /// <summary>
         /// 目标词的路径
@@ -54,24 +54,89 @@ namespace Assets.Script.PunPinYin
         /// </summary>
         public static Int64 TimeDuratation = 0;
 
+        /// <summary>
+        /// 扫描发现的物体
+        /// </summary>
+        public static String ScanObjectPngName = "";
 
 
-        public static String getOneLetterPath()
+        /// <summary>
+        /// play video set mp4 path
+        /// </summary>
+        public static String playVideoSetMp4Path = "";
+
+
+        /// <summary>
+        /// play video set mp4 path
+        /// </summary>
+        public static int playVideoSetThisOlderNum = -1;
+
+        
+        public static String getLetterPath(int boolwhich = 10)
         {
-            string strWindowsHeadPath = "C:/Works/unity3dGame/U001PinYinGame";
+            string strWindowsHeadPath = "";
             if (Application.platform == RuntimePlatform.Android)
             {
-                strWindowsHeadPath = (new TestSD()).getStoragePath();
+                ///此电脑\vivo S1\SanDisk SD 卡\Android\data\com.shiyi.U001PinYinGame\files\U001PinYinGame
+                string stridentifier = Path.Combine("Android/data", Application.identifier);
+                strWindowsHeadPath = Path.Combine((new AndoridSD()).getStoragePath(), stridentifier);
+                StaticGlobal.RootWindowPath = Path.Combine(strWindowsHeadPath, "files/U001PinYinGame/externalResources/001GameResource");
+                //strWindowsHeadPath = (new AndoridSD()).getStoragePath();
+                //StaticGlobal.RootWindowPath = Path.Combine(strWindowsHeadPath, "U001PinYinGame/externalResources/001GameResource");
+            }
+            else if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+            {
+                StaticGlobal.RootWindowPath = @"C:\001EduPinYin\externalResources\001GameResource";
             }
 
-            String strgetOneLetterPath = strWindowsHeadPath + "/" + StaticGlobal.RootWindowPath + "/" + StaticGlobal.SelectDestinationTargetWord + "/" + StaticGlobal.SelectDestinationTargetItem + "/" + StaticGlobal.SelectTargetItemNum;
+            String strgetOneLetterPath = Path.Combine(StaticGlobal.RootWindowPath , StaticGlobal.SelectDestinationTargetWord);
+            if (boolwhich == 10) {
+                strgetOneLetterPath = Path.Combine(strgetOneLetterPath, StaticGlobal.SelectDestinationTargetItem);
+            }
             Debug.Log("strgetOneLetterPath=" + strgetOneLetterPath);
-            
+
             return strgetOneLetterPath;
 
         }
 
-        public void getTargetItemListPath()
+        public static String getLetterRecordPath()
+        {
+            string destination = Application.persistentDataPath;
+            if (!Directory.Exists((destination)))
+            {
+                Directory.CreateDirectory(destination);
+            }
+            string strSelectDestinationTargetWord = Path.Combine(destination, StaticGlobal.SelectDestinationTargetWord);
+            if (!Directory.Exists((strSelectDestinationTargetWord)))
+            {
+                Directory.CreateDirectory(strSelectDestinationTargetWord);
+            }
+            string strSelectDestinationTargetItem = Path.Combine(strSelectDestinationTargetWord, StaticGlobal.SelectDestinationTargetItem);
+            if (!Directory.Exists((strSelectDestinationTargetItem)))
+            {
+                Directory.CreateDirectory(strSelectDestinationTargetItem);
+            }
+
+            return strSelectDestinationTargetItem;
+        }
+
+            /*
+            public static String getOneLetterPath()
+            {
+                string strWindowsHeadPath = "C:/Works/unity3dGame/U001PinYinGame";
+                if (Application.platform == RuntimePlatform.Android)
+                {
+                    strWindowsHeadPath = (new AndoridSD()).getStoragePath();
+                }
+
+                String strgetOneLetterPath = strWindowsHeadPath + "/" + StaticGlobal.RootWindowPath + "/" + StaticGlobal.SelectDestinationTargetWord + "/" + StaticGlobal.SelectDestinationTargetItem;
+                Debug.Log("strgetOneLetterPath=" + strgetOneLetterPath);
+
+                return strgetOneLetterPath;
+
+            }
+            */
+            public void getTargetItemListPath()
         {
 
             string TargetItemListPath = getAssetPath();
@@ -114,7 +179,7 @@ namespace Assets.Script.PunPinYin
                 Debug_Log.Call_WriteLog(Directory.Exists(Application.streamingAssetsPath + "!/assets/001GameResource/"), "3 Application.streamingAssetsPath", "001PinYIn");
 
                 strAppPath = "jar:file://" + Application.streamingAssetsPath + "!/assets";
-                strAppPath = (new TestSD()).getStoragePath();
+                strAppPath = (new AndoridSD()).getStoragePath();
 
             }
             else if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
